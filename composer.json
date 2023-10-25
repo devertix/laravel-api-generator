@@ -1,0 +1,37 @@
+{
+    "name": "devertix/laravel-api-generator",
+    "description": "This is the description of the package.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [{
+        "name": "Norbert Mozsar",
+        "email": "norbert.mozsar@devertix.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Devertix\\LaravelApiGenerator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Devertix\\LaravelApiGenerator\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "devertix/laravel-base": "9.0.2"
+    },
+    "require-dev": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Devertix\\LaravelApiGenerator\\Providers\\PackageServiceProvider"
+            ]
+        }
+    },
+    "repositories": {
+        "devertix/laravel-base": {
+            "type": "vcs",
+            "url": "https://github.com/devertix/laravel-base.git"
+        }
+    }
+}

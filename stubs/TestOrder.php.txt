@@ -1,0 +1,12 @@
+<?php
+
+namespace Tests\Feature\Api\%%model%%;
+
+use App\Models\%%model%%;
+use Illuminate\Http\Response;
+use Devertix\LaravelBase\Tests\Api\ApiTestBase;
+
+class %%model%%OrderTest extends ApiTestBase
+{
+%%code%%
+}

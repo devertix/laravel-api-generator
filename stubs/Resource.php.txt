@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Resources;
+
+use Devertix\LaravelBase\Http\Resources\BaseResource;
+
+class %%model%%Resource extends BaseResource
+{
+    public function getResourceKey()
+    {
+        return '%%machine_name_snake%%';
+    }
+
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getAttributes($request)
+    {
+        return [
+            'id' => $this->id,
+%%code%%
+        ];
+    }
+}

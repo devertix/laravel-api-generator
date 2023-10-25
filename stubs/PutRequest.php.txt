@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Http\Requests\Api\%%model%%;
+
+use Devertix\LaravelBase\Http\Requests\Api\PutRequest;
+
+class %%model%%PutRequest extends PutRequest
+{
+    protected function addRules(): array
+    {
+        // @TODO: add/modify validations for your custom fields
+        return parent::addRules() + [];
+    }
+}

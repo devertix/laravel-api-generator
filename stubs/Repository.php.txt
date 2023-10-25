@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Models\%%model%%;
+use Devertix\LaravelBase\Repositories\BaseRepository;
+
+class %%model%%Repository extends BaseRepository
+{
+%%code%%
+    public function getModelClass()
+    {
+        return %%model%%::class;
+    }
+}

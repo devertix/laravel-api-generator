@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Http\Requests\Api\%%model%%;
+
+use App\%%model%%;
+use Carbon\Carbon;
+
+class %%model%%RequestBase
+{
+    public static function addRules()
+    {
+        // @TODO: add/modify validations for your custom fields
+        return [
+%%code%%
+        ];
+    }
+}

@@ -1,0 +1,171 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Requests\Api\%%model%%\%%model%%PostRequest;
+use App\Http\Requests\Api\%%model%%\%%model%%PutRequest;
+use App\Repositories\%%model%%Repository;
+use App\Http\Resources\%%model%%Resource;
+use Devertix\LaravelBase\Http\Controllers\BaseResourceController;
+use Devertix\LaravelBase\Repositories\BaseRepository;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+class %%model%%Controller extends BaseResourceController
+{
+    /**
+     * @api                 {get} /api/%%machine_name_snake%% List
+     * @apiGroup            %%model%%
+     * @apiName             %%model%%List
+     * @apiDescription      List all entity.
+     * @apiParam            {integer} page Page number
+     * @apiParam            {integer} limit Number of items per page
+     * @apiParam            {string} orderby The field name to order by
+     * @apiParam            {string} sortorder Ordering direction (asc|desc)
+     * @apiSuccess          {object} data The entity.
+     * @apiSuccess          {object} meta Pagination information.
+     * @apiSuccess          {object} links Pagination links.
+     * @apiSuccessExample   {json} Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "data": [
+     *         {
+     *           "type": "%%machine_name_snake%%",
+     *           "id": "1",
+     *           "attributes": {
+%%attributes_response%%
+     *           }
+     *         }
+     *       ],
+     *       "meta": {
+     *         "pagination": {
+     *           "total": 1,
+     *           "count": 1,
+     *           "per_page": 50,
+     *           "current_page": 1,
+     *           "total_pages": 1
+     *         }
+     *       },
+     *       "links": {
+     *         "self": "http://localhost/api/%%machine_name_snake%%?limit=50&page=1",
+     *         "first": "http://localhost/api/%%machine_name_snake%%?limit=50&page=1",
+     *         "last": "http://localhost/api/%%machine_name_snake%%?limit=50&page=1"
+     *       }
+     *     }
+     */
+    /**
+     * @api                 {get} /api/%%machine_name_snake%%/{id} Show
+     * @apiGroup            %%model%%
+     * @apiName             %%model%%Show
+     * @apiDescription      Show an entity.
+     * @apiParam            {integer} id Entity id.
+     * @apiSuccess          {object} data The entity.
+     * @apiSuccessExample   {json} Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "data":
+     *         {
+     *           "type": "%%machine_name_snake%%",
+     *           "id": "1",
+     *           "attributes": {
+%%attributes_response%%
+     *           }
+     *       }
+     *     }
+     */
+    /**
+     * @api                 {delete} /api/%%machine_name_snake%%/{id} Delete
+     * @apiGroup            %%model%%
+     * @apiName             %%model%%Delete
+     * @apiDescription      Delete the given entity.
+     * @apiParam            {integer} id Entity id.
+     * @apiSuccessExample Success-Response:
+     *     HTTP/1.1 204 No Content
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 404 Not Found
+     */
+    protected function getResource()
+    {
+        return %%model%%Resource::class;
+    }
+
+    protected function getRepository(): BaseRepository
+    {
+        return new %%model%%Repository();
+    }
+
+    /**
+     * @api                 {post} /api/%%machine_name_snake%% Store
+     * @apiGroup            %%model%%
+     * @apiName             %%model%%Store
+     * @apiDescription      Store a new entity.
+     * @apiExample   Example-Request:
+     *     {
+     *       "data":
+     *         {
+     *           "type": "%%machine_name_snake%%",
+     *           "attributes": {
+%%attributes_request%%
+     *           }
+     *       }
+     *     }
+     * @apiSuccess          {object} data The created entity.
+     * @apiSuccessExample   {json} Success-Response:
+     *     HTTP/1.1 201 Created
+     *     {
+     *       "data":
+     *         {
+     *           "type": "%%machine_name_snake%%",
+     *           "id": "1",
+     *           "attributes": {
+%%attributes_response%%
+     *           }
+     *       }
+     *     }
+     */
+    public function store(%%model%%PostRequest $request)
+    {
+        $data = $request->input('data');
+        $model = $this->getRepository()->store($data['attributes']);
+        return $this->getItemResponse($model, Response::HTTP_CREATED);
+    }
+
+    /**
+     * @api                 {patch} /api/%%machine_name_snake%%/{id} Update
+     * @apiGroup            %%model%%
+     * @apiName             %%model%%Update
+     * @apiDescription      Update an entity.
+     * @apiParam            {integer} id Entity id.
+     * @apiExample   Example-Request:
+     *     {
+     *       "data":
+     *         {
+     *           "type": "%%machine_name_snake%%",
+     *           "id": "1",
+     *           "attributes": {
+%%attributes_request%%
+     *           }
+     *       }
+     *     }
+     * @apiSuccess          {object} data The entity.
+     * @apiSuccessExample   {json} Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "data":
+     *         {
+     *           "type": "%%machine_name_snake%%",
+     *           "id": "1",
+     *           "attributes": {
+%%attributes_response%%
+     *           }
+     *       }
+     *     }
+     */
+    public function update($id, %%model%%PutRequest $request)
+    {
+        $data = $request->input('data');
+        $model = $this->getRepository()->update($id, $data['attributes']);
+        return $this->getItemResponse($model);
+    }
+%%code%%
+}
