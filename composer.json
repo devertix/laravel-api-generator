@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "devertix/laravel-base": "9.0.2"
+        "devertix/laravel-base": "9.0.3"
     },
     "require-dev": {},
     "extra": {
